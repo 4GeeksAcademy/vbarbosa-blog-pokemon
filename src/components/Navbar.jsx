@@ -8,7 +8,7 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-light bg-light sticky-top">
-			<div className="container">
+			<div className="container-fluid">
 				<Link to="/">
 					<img src={pokeapi} className="w-50 m-2"/>
 				</Link>

@@ -6,3 +6,34 @@ div.scroll-container {
     overflow: auto;
     white-space: nowrap;
   }
+
+.bgCardBody{
+  background-color: rgb(244, 244, 244);
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(91, 91, 180);
+  border-radius: 1rem;
+
+}
+
+.bgDetails{
+  background-image: url('https://img.freepik.com/free-vector/gradient-zoom-effect-background_23-2149717745.jpg?semt=ais_hybrid&w=740');
+  background-size: 80rem;
+  background-repeat: no-repeat;
+  justify-content: center;
+}
+
+.bgCardDetails{
+  background-color: rgb(255, 221, 87);
+  border-style: solid;
+  border-width: 10px;
+  border-color: rgb(91, 91, 180);
+  border-radius: 1rem;
+
+}
+.bgHome{
+  background-image: url('https://www.shutterstock.com/shutterstock/videos/1056489392/thumb/1.jpg?ip=x480');
+  background-size: 80rem;
+  background-repeat: 2;
+  justify-content: center;
+}
