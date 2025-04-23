@@ -1,6 +1,7 @@
 export const initialStore=()=>{
   return{
     message: null,
+    pokemons: null,
     todos: [
       {
         id: 1,
@@ -18,6 +19,15 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+    case 'get_all_pokemons':
+      return {
+        ...store, pokemons: action.payload
+      }
+    case 'get_pokemons':
+      return {
+        ...store, pokemons: action.payload
+      }
+        
     case 'add_task':
 
       const { id,  color } = action.payload
