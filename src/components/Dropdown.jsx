@@ -16,26 +16,29 @@ export const Dropdown = () => {
     const handleDelete = (name) => {
         const newList = fav.filter(item => item !== name);
         setFav(newList);
-        console.log(newList);
         dispatch({ type: 'remove_fav', payload: newList});
         
     }
 
     return (
         <div className="btn-group">
-            <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" 
+            className="btn btn-primary dropdown-toggle" 
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="false"
+            aria-expanded="false">
                 Favourites {store.favList?.length > 0 ? store.favList?.length : "0"}
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
             {store.favList && store.favList.length > 0 ? (
                     store.favList.map((el, i) => (
                         <li key={i} className="d-flex">
-                            <button className="dropdown-item" type="button" style={{ textTransform: 'capitalize' }}>
+                            <button className="dropdown-item m-1" type="button" style={{ textTransform: 'capitalize' }}>
                                 {el}
                             </button>
                             <button 
                                 type="button" 
-                                className="btn-close" 
+                                className="btn-close m-2" 
                                 aria-label="Close"
                                 onClick={() => handleDelete(el)}
                             ></button>
@@ -43,7 +46,7 @@ export const Dropdown = () => {
                     ))
                 ) : (
                     <li>
-                        <button className="dropdown-item" type="button" disabled>Your favourites list</button>
+                        <button className="dropdown-item m-1" type="button" disabled>Your favourites list</button>
                     </li>
                 )}
                 

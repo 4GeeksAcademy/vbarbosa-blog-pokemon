@@ -44,7 +44,7 @@ export const Home = () => {
 				</div>
 			</div>
 			<div className="my-3">
-				<h1 className="text-success m-2">Types</h1>
+				<h1 className="text-dark m-2">Types</h1>
 				<div className="row">
 					<div className="scroll-container d-flex p-3">
 						{

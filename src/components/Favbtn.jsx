@@ -7,11 +7,13 @@ import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 // icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 export const FavBtn = (props) => {
 
     const {store, dispatch} =useGlobalReducer();
     const [fav, setFav] = useState([]);
+    const isFav = fav.includes(props.name);
 
     useEffect(() => {
         // Initialize favorites from the store
@@ -31,15 +33,11 @@ export const FavBtn = (props) => {
         }
     }
     
-    
-
-    console.log(fav);
-    
     return (
         <button type="button"
-        className="btn btn-outline-warning text-danger"
+        className={isFav ? "btn btn-warning text-danger" : "btn btn-outline-warning btBtnFav text-danger"}
         onClick={handleClick}>
-            <FontAwesomeIcon icon={faHeart}/>
+            <FontAwesomeIcon icon={isFav ? faHeartSolid : faHeart}/>
         </button>
     );
 } 
