@@ -46,7 +46,7 @@ export const Types = (props) => {
                         alt={props.name}/>
                     </div>
                 </div>
-                <div className="card-body m-2" style={{minHeight: '19git rem'}}>
+                <div className="card-body m-2" style={{minHeight: '20rem'}}>
                     <div className="row">
                         <div className="col-12 text-center">
                             <h3 className="text-primary">Double damage</h3>
