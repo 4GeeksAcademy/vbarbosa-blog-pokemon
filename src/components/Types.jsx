@@ -9,6 +9,7 @@ import pokemonServices from "../services/pokemonServices.js";
 export const Types = (props) => {
 
     const {store, dispatch} =useGlobalReducer();
+    // we set a use state to manage the damage relatiopns extracted from API
     const [damage, setDamage] = useState(null);
     
     const pId = props.url.split('/')[6];
@@ -19,15 +20,17 @@ export const Types = (props) => {
     // manage the image source
     const [imageSrc, setImageSrc] = useState(imgUrl2);
 
+    // to render the img as well data based on the type
     useEffect(() => {
         getOneType();
     }, []);
 
-    // Function to handle image load error
+    // Function to handle image load error and set a another img Url on place of broken img
     const handleImageError = () => {
         setImageSrc(imgNA); // Fallback to the other image URL
     };
 
+    // gets a specific type of attack
     const getOneType = async () => pokemonServices.getOneType(pId).then(data=>{
         dispatch({type: 'get_one_type', payload:data});
         setDamage(data?.damage_relations);

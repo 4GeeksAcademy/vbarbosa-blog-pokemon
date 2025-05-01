@@ -1,5 +1,7 @@
 const pokemonServices = {};
 
+// this gets up to 20 pokemons we but we can change offset to 0 and limit to 1302
+// This would require pagination to avoid making the web so slow
 pokemonServices.getSomePokemons = async () => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
@@ -10,6 +12,7 @@ pokemonServices.getSomePokemons = async () => {
     }
 }
 
+// gets a specific pokemon based on id
 pokemonServices.getOnePokemon = async (id) => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/pokemon/' + id);
@@ -21,6 +24,7 @@ pokemonServices.getOnePokemon = async (id) => {
     }
 }
 
+// gets description of the pokemon based on id
 pokemonServices.getDescription = async (id) => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/characteristic/' + id);
@@ -33,6 +37,7 @@ pokemonServices.getDescription = async (id) => {
     }
 }
 
+// gets the species information based on id
 pokemonServices.getSpecies = async (id) => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/pokemon-species/' + id);
@@ -45,6 +50,7 @@ pokemonServices.getSpecies = async (id) => {
     }
 }
 
+// gets all types of attack 
 pokemonServices.getTypes = async () => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/type/?offset=0&limit=21');
@@ -57,6 +63,7 @@ pokemonServices.getTypes = async () => {
     }
 }
 
+// gets an specific type of attack based on id
 pokemonServices.getOneType = async (id) => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/type/' + id);
@@ -69,6 +76,7 @@ pokemonServices.getOneType = async (id) => {
     }
 }
 
+// gets all items
 pokemonServices.getItems = async () => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/item');
@@ -80,6 +88,8 @@ pokemonServices.getItems = async () => {
 
     }
 }
+
+// gets specific item based on id
 pokemonServices.getOneItem = async (id) => {
     try {
         const resp = await fetch('https://pokeapi.co/api/v2/item/' + id);
