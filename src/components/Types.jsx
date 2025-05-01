@@ -46,32 +46,32 @@ export const Types = (props) => {
                         alt={props.name}/>
                     </div>
                 </div>
-                <div className="card-body m-2" style={{minHeight: '30rem'}}>
+                <div className="card-body m-2" style={{minHeight: '19git rem'}}>
                     <div className="row">
                         <div className="col-12 text-center">
-                            <h5 className="text-primary">Double damage</h5>
+                            <h3 className="text-primary">Double damage</h3>
                         </div>
                     </div>
-                    <div className="row my-3" style={{textTransform: 'capitalize'}}>
-                        <div className="col-12">
-                            <h6 className="text-success m-1">From:</h6>
+                    <div className="row my-3 d-flex" style={{textTransform: 'capitalize'}}>
+                        <div className="col-6">
+                            <h5 className="text-success m-1">From:</h5>
                             <div className="col-12">
                                 {damage?.double_damage_from && damage.double_damage_from.length > 0 ? (
                                 damage.double_damage_from.map((damageType, i) => (
-                                    <p key={i} className="fs-5 m-0 text-danger m-1">{damageType.name}</p>
-                                ))) : (<p className="fs-5 m-0 text-danger m-1">None</p>)}
+                                    <li key={i} className="fs-5 m-0 text-danger m-1">{damageType.name}</li>
+                                ))) : (<li className="fs-5 m-0 text-danger m-1">None</li>)}
                             </div>
                         </div>
-                        <div className="col-12">
+                        <div className="col-6">
                             <div className="row">
                                 <div className="col-12">
-                                    <h6 className="text-success m-1">To:</h6>
+                                    <h5 className="text-success m-1">To:</h5>
                                 </div>
                                 <div className="col-12">
                                     {damage?.double_damage_to && damage.double_damage_to.length > 0 ? (
                                     damage.double_damage_to.map((damageType, i) => (
-                                        <p key={i} className="fs-5 m-0 text-danger m-1">{damageType.name}</p>
-                                    ))) : (<p className="fs-5 m-0 text-danger m-1">None</p>)}
+                                        <li key={i} className="fs-5 m-0 text-danger m-1">{damageType.name}</li>
+                                    ))) : (<li className="fs-5 m-0 text-danger m-1">None</li>)}
                                 </div>
                             </div>
                         </div>
