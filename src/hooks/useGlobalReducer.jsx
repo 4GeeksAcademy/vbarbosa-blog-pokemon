@@ -1,5 +1,10 @@
 // Import necessary hooks and functions from React.
 import { useContext, useReducer, createContext } from "react";
+import { useEffect } from "react";
+
+// services
+import pokemonServices from "../services/pokemonServices.js";
+
 import storeReducer, { initialStore } from "../store"  // Import the reducer and the initial state.
 
 // Create a context to hold the global state of the application
@@ -11,6 +16,47 @@ const StoreContext = createContext()
 export function StoreProvider({ children }) {
     // Initialize reducer with the initial state.
     const [store, dispatch] = useReducer(storeReducer, initialStore())
+    
+    // Load the page once only
+    useEffect (() => {
+        loadSomePokemons();
+        getTypes();
+        getItems();
+    }, [])
+    
+    const loadSomePokemons = async () => {
+        try {
+            const resp = await pokemonServices.getSomePokemons();
+            dispatch({ type: 'get_pokemons', payload: resp.results })
+        } 
+        
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getTypes = async () => {
+        try {
+            const resp = await pokemonServices.getTypes();
+            dispatch({type: 'get_types', payload:resp.results});
+        } 
+        
+        catch (error) {
+            console.log(error);
+        }
+    }
+    
+    const getItems = async () => {
+        try {
+            const resp = await pokemonServices.getItems();
+            dispatch({type: 'get_items', payload:resp.results});
+        } 
+        
+        catch (error) {
+            console.log(error);
+        }
+    }
+
     // Provide the store and dispatch method to all child components.
     return <StoreContext.Provider value={{ store, dispatch }}>
         {children}

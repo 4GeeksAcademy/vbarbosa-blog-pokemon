@@ -1,16 +1,52 @@
+import { useEffect, useState } from "react";
 
+// hooks
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 
 export const Dropdown = () => {
+
+    const {store, dispatch} =useGlobalReducer();
+    const [fav, setFav] = useState([]);
+
+    useEffect(() => {
+        // Initialize favorites from the store
+        setFav(store.favList || []);
+    }, [store.favList]); // Depend on store.favList
+
+    const handleDelete = (name) => {
+        const newList = fav.filter(item => item !== name);
+        setFav(newList);
+        console.log(newList);
+        dispatch({ type: 'remove_fav', payload: newList});
+        
+    }
 
     return (
         <div className="btn-group">
             <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Favourites 0
+                Favourites {store.favList?.length > 0 ? store.favList?.length : "0"}
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
-                <li><button className="dropdown-item" type="button">Action</button></li>
-                <li><button className="dropdown-item" type="button">Another action</button></li>
-                <li><button className="dropdown-item" type="button">Something else here</button></li>
+            {store.favList && store.favList.length > 0 ? (
+                    store.favList.map((el, i) => (
+                        <li key={i} className="d-flex">
+                            <button className="dropdown-item" type="button" style={{ textTransform: 'capitalize' }}>
+                                {el}
+                            </button>
+                            <button 
+                                type="button" 
+                                className="btn-close" 
+                                aria-label="Close"
+                                onClick={() => handleDelete(el)}
+                            ></button>
+                        </li>
+                    ))
+                ) : (
+                    <li>
+                        <button className="dropdown-item" type="button" disabled>Your favourites list</button>
+                    </li>
+                )}
+                
             </ul>
         </div>
     );

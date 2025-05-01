@@ -4,7 +4,12 @@ export const initialStore=()=>{
     pokemons: null,
     details: null,
     description: null,
-    gender: null,
+    species: null,
+    types: null,
+    oneType: null,
+    items:null,
+    item: null,
+    favList:null,
     todos: [
       {
         id: 1,
@@ -22,10 +27,6 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'get_all_pokemons':
-      return {
-        ...store, pokemons: action.payload
-      }
     case 'get_pokemons':
       return {
         ...store, pokemons: action.payload
@@ -38,11 +39,37 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store, description: action.payload
       }
-    case 'get_gender':
+    case 'get_species':
       return {
-        ...store, gender: action.payload
+        ...store, species: action.payload
       }
-        
+    case 'get_types':
+      return {
+        ...store, types: action.payload
+      }
+    case 'get_one_type':
+      return {
+        ...store, oneType: action.payload
+      }
+    case 'get_items':
+
+         return {
+        ...store, items: action.payload
+      }
+    case 'get_one_item':
+
+        return {
+      ...store, item: action.payload
+    }
+    case 'add_fav':
+      return {
+        ...store, favList: action.payload
+      }
+    case 'remove_fav':
+      return {
+        ...store, favList: action.payload
+      }
+    
     case 'add_task':
 
       const { id,  color } = action.payload
