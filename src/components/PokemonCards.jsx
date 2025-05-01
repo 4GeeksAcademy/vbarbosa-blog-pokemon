@@ -14,6 +14,8 @@ export const PokemonCards = (props) => {
 
     const {store, dispatch} =useGlobalReducer();
 
+    // set states for habitat and details to in order to update cthe card with the data for each pokemon
+    // As both comes from different endpoint we need to set them separatedly
     const [habitat, setHabitat] = useState(null);
     const [details, setDetails] = useState(null);
     
@@ -21,6 +23,7 @@ export const PokemonCards = (props) => {
     
     const imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pId+'.png';
 
+    // render the card with data from props and constants
     useEffect(() => {
         getSpecies();
         getDetails();

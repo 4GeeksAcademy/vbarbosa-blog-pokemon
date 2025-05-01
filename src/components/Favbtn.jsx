@@ -13,20 +13,24 @@ export const FavBtn = (props) => {
 
     const {store, dispatch} =useGlobalReducer();
     const [fav, setFav] = useState([]);
+
+    // check if the item is on fav list in order to change the icon or class for the button
     const isFav = fav.includes(props.name);
 
     useEffect(() => {
         // Initialize favorites from the store
         setFav(store.favList || []);
-    }, [store.favList]); // Depend on store.favList
+    }, [store.favList]);
 
     const handleClick = () => {
         if (!fav.includes(props.name)) {
-            // Add to favorites
+            // Add to favorite list
             const newFav = [...fav, props.name];
             setFav(newFav);
+            // we need to update store so we can use it in other components like the dropdown
             dispatch({ type: 'add_fav', payload: newFav });
         } else {
+            // Removes from favourite list
             const newList = fav.filter(item => item !== props.name);
             setFav(newList);
             dispatch({ type: 'remove_fav', payload: newList});

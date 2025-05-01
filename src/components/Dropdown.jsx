@@ -9,11 +9,12 @@ export const Dropdown = () => {
     const [fav, setFav] = useState([]);
 
     useEffect(() => {
-        // Initialize favorites from the store
+        // Initialize favorites from the store with the new items on list or empty if none is saved
         setFav(store.favList || []);
-    }, [store.favList]); // Depend on store.favList
+    }, [store.favList]);
 
     const handleDelete = (name) => {
+        // Remove item from fav list on store
         const newList = fav.filter(item => item !== name);
         setFav(newList);
         dispatch({ type: 'remove_fav', payload: newList});
@@ -27,9 +28,13 @@ export const Dropdown = () => {
             data-bs-toggle="dropdown"
             data-bs-auto-close="false"
             aria-expanded="false">
+                {/* we use lenght to indicate how many items are on the list */}
+                {/* if none woul be set to 0 */}
                 Favourites {store.favList?.length > 0 ? store.favList?.length : "0"}
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
+                {/* important to use condition to either show list or a span/comment with no items added */}
+                {/* we will only map if there is items on the list */}
             {store.favList && store.favList.length > 0 ? (
                     store.favList.map((el, i) => (
                         <li key={i} className="d-flex">
